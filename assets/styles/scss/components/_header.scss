@@ -1,0 +1,100 @@
+.header {
+
+  &__middle {
+    padding: 30px 0;
+
+    &-cart {
+      font-size: 20px;
+      display: inline-block;
+      float: right;
+
+      li {
+        display: inline-block;
+        float: left;
+        padding: 10px;
+
+        i {
+          position: relative;
+
+          span {
+            position: absolute;
+            right: -10px;
+            top: -1px;
+            height: 15px;
+            width: 15px;
+            background: #000000;
+            color: #ffffff;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 15px;
+          }
+        }
+      }
+
+
+      &-price {
+        font-weight: bold;
+      }
+    }
+
+
+  }
+
+  &__top {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid #E5E5E5;
+    height: 40px;
+
+    span {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 10px;
+    }
+
+    i {
+      padding: 10px;
+    }
+
+    .navbar {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    &-contact {
+      float: left;
+
+      &-email {
+        float: left;
+        border-right: 1px solid #E5E5E5;
+        padding-top: 5px;
+        padding-bottom: 10px;
+      }
+
+      &-phone {
+        float: left;
+        border-right: 1px solid #E5E5E5;
+        padding-top: 5px;
+        padding-bottom: 10px;
+      }
+    }
+
+    &-social {
+      float: right;
+      padding-top: 5px;
+      padding-bottom: 10px;
+      padding-right: 20px;
+    }
+
+    &-profile {
+      float: right;
+      border-left: 1px solid #E5E5E5;
+      padding-top: 5px;
+      padding-bottom: 10px;
+    }
+
+  }
+
+}
