@@ -1,0 +1,26 @@
+.advertisement {
+  background-color: black;
+  color: white;
+  text-align: center;
+
+  &__info {
+    display: flex;
+    width: 100%;
+    vertical-align: middle;
+    align-items: center;
+    flex-direction: row;
+
+    h5 {
+      width: 96%;
+      word-wrap: break-word;
+    }
+
+    i {
+      font-size: 30px;
+      width: 4%;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+  }
+}

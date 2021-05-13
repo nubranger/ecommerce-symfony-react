@@ -1,32 +1,52 @@
+
 .header {
 
+    .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 9999;
+    }
+
   &__middle {
-    padding: 30px 0;
+    padding: 10px 0;
+
+    img {
+      width: 100px;
+    }
+
+    .form-control:focus {
+      color: #343a40;
+      border: 1px solid #E5E5E5;
+      outline: 0;
+      box-shadow: none;
+    }
 
     &-cart {
-      font-size: 20px;
       display: inline-block;
       float: right;
+      width: 100%;
 
       li {
         display: inline-block;
         float: left;
-        padding: 10px;
+        padding: 0 10px;
 
         i {
           position: relative;
 
           span {
+            font-style: normal;
             position: absolute;
-            right: -10px;
-            top: -1px;
-            height: 15px;
-            width: 15px;
+            right: -15px;
+            top: -3px;
+            height: 16px;
+            width: 18px;
             background: #000000;
             color: #ffffff;
             border-radius: 50%;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 600;
             text-align: center;
             line-height: 15px;
           }
@@ -49,13 +69,13 @@
     height: 40px;
 
     span {
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 8px;
+      padding-bottom: 9px;
       padding-right: 10px;
     }
 
     i {
-      padding: 10px;
+      padding: 8px;
     }
 
     .navbar {
@@ -75,7 +95,6 @@
 
       &-phone {
         float: left;
-        border-right: 1px solid #E5E5E5;
         padding-top: 5px;
         padding-bottom: 10px;
       }

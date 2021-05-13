@@ -2,35 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ca60cc0-bb72-4ee1-b38c-179a39b5c0c2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/components/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/scss/base.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/scss/components/_header.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/scss/main.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/ecommerce-symfony-react.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ecommerce-symfony-react.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/Navbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/components/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/components/Hero.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/components/Hero.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/components/Shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/components/Shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/scss/base.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_header.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/scss/main.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -142,6 +137,8 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1s8L5WjhNOJ7mjHI3fhXkzntqsI" />
@@ -153,10 +150,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\assets" />
+      <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\assets\styles\scss" />
+      <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\assets\components" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -183,7 +188,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1620249109937</updated>
-      <workItem from="1620249116622" duration="16011000" />
+      <workItem from="1620249116622" duration="17744000" />
+      <workItem from="1620730759616" duration="39000" />
+      <workItem from="1620730845770" duration="11356000" />
     </task>
     <servers />
   </component>

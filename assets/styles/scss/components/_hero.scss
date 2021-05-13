@@ -1,0 +1,63 @@
+.hero {
+  background-color: #212529;
+  padding-bottom: 40px;
+
+  img {
+    height: 600px;
+  }
+
+  .carousel-caption {
+    bottom: 40%;
+    color: #fff;
+    text-align: center;
+  }
+
+  .btn-shop {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: #6c757d;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 1rem;
+    border-radius: .25rem;
+    animation: moveInBottom 1s ease-out 1s;
+    animation-fill-mode: backwards;
+
+    &:hover {
+      color: #fff;
+      background-color: #5c636a;
+      border-color: #565e64;
+      transition: .3s;
+    }
+  }
+
+  h1 {
+    animation: moveInBottom 1s ease-out .3s;
+    animation-fill-mode: backwards;
+  }
+
+  p {
+    animation: moveInBottom 1s ease-out .5s;
+    animation-fill-mode: backwards;
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

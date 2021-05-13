@@ -1,0 +1,43 @@
+.menu__info {
+  display: inline-block;
+  width: 100%;
+  color: white;
+  padding-top: 5px;
+  padding-right: 20px;
+  margin: 0;
+  transition: all 0.3s linear;
+
+
+  li {
+    display: inline-block;
+    float: right;
+    padding: 0 10px;
+
+    i {
+      position: relative;
+
+      span {
+        font-style: normal;
+        position: absolute;
+        right: -15px;
+        top: -3px;
+        height: 16px;
+        width: 18px;
+        background: #6c757d;
+        color: #ffffff;
+        border-radius: 50%;
+        font-size: 11px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 15px;
+      }
+    }
+
+  }
+
+
+  &-price {
+    font-weight: bold;
+  }
+}
+

@@ -1,0 +1,79 @@
+.menu {
+  background-color: #212529;
+
+  .btn {
+    background-color: transparent;
+  }
+
+  .btn-secondary {
+    color: #fff;
+    border: none;
+    //border-left: 1px solid #E5E5E5;
+
+    &:focus {
+      color: #fff;
+      box-shadow: none;
+    }
+  }
+
+  .navbar {
+    padding: 0;
+
+    .nav-link.active {
+      background-color: #6c757d;
+    }
+
+    .bi-card-list {
+      padding: 0 10px;
+      color: #b5b5b5;
+      font-size: 15px;
+      width: 200px;
+    }
+
+    .navbar-nav {
+
+      .nav-link:first-child {
+        color: white;
+        font-size: 14px;
+        border-right: 1px solid #E5E5E5;
+        border-left: 1px solid #E5E5E5;
+      }
+
+      .nav-link {
+        color: white;
+        font-size: 14px;
+        border-right: 1px solid #E5E5E5;
+        padding: 10px 25px;
+        border-radius: 0;
+
+        &:hover {
+          background-color: #6c757d;
+        }
+      }
+    }
+
+    a {
+      border-radius: 0;
+    }
+
+    .btn {
+      border-radius: 0;
+    }
+
+    .navbar-brand {
+      padding: 0;
+      margin: 0;
+
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-item {
+        &:hover {
+          transition: 1s;
+          background-color: #36414C0F;
+        }
+      }
+    }
+  }
+}
