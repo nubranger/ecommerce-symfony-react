@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
     Button,
     Col,
@@ -10,8 +10,11 @@ import {
 } from "reactstrap";
 import HeaderCart from "./HeaderCart";
 import HeaderHeart from "./HeaderHeart";
+import {EshopContext} from "../context/context";
 
 const Header = () => {
+    const { account } = useContext(EshopContext);
+
 
     const [showCart, setShowCart] = useState(false);
     const [showHeart, setShowHeart] = useState(false);
@@ -43,7 +46,7 @@ const Header = () => {
                     </div>
                     <div className="header__top-profile">
                         <i className="bi bi-file-person-fill"/>
-                        <span>Login</span>
+                        {account.username ? <span>{account.username}</span> : <span>Login</span>}
                     </div>
                     <div className="header__top-social">
                         <i className="bi bi-facebook"/>
