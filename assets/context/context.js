@@ -1,71 +1,91 @@
 import React, {useState, useEffect, useContext, createContext} from 'react';
+import axios from 'axios';
+import {getProducts, deleteProducts, createProducts} from '../api/products_api';
 
 const EshopContext = React.createContext();
 
-const EshopProvider = ({ children }) => {
+const EshopProvider = ({children}) => {
 
-    const [email, setEmail] = useState("admin@mail.com");
-    const [password, setPassword] = useState("pass");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [account, setAccount] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+    const [products, setProducts] = useState([]);
 
-    console.log(account)
-
-    const [isLoading, setIsLoading] = useState(false);
-    // error
-    // const [error, setError] = useState({ show: false, msg: '' });
-
-    const handleAccount = async (e) => {
-        console.log("log")
+    const handleAccount = (e) => {
         e.preventDefault();
-        if (email === "" || password === "" ) {
+        if (email === "" || password === "") {
             setError("Enter all fields");
         } else {
-            try {
-                const settings = {
-                    method: 'POST',
+
+            setIsLoading(true);
+            setError("");
+            axios.post('/login', {
+                    username: email,
+                    password: password
+                },
+                {
                     headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        "username": email,
-                        "password": password
-                    })
-                }
-                const response = await fetch("/login", settings);
-                if (response.ok) {
-                    const data = await response.json();
-                    // return <Redirect to='/' />
-                    console.log(data)
-                    setAccount(data);
+                        'content-type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    // console.log(response.headers);
+
+                    setAccount({username: response.headers.username, roles: response.headers.roles});
+                }).catch(error => {
+                if (error.response.data.error) {
+                    setError(error.response.data.error);
                 } else {
-                    setError("Wrong username or password.")
+                    setError("Unknown error");
                 }
-            } catch (e) {
-                console.log(e)
-            }
+
+            }).finally(() => {
+                setIsLoading(false);
+            })
+
         }
 
     }
 
     useEffect(() => {
-        console.log("f")
+        setIsLoading(true);
+        getProducts().then(data => {
+            setProducts(data);
+        })
+            .catch((error)=> {console.error(error)})
+            .finally(() => {setIsLoading(false);
+        });
+
+    }, []);
+
+    useEffect(() => {
         handleAccount;
-    },[]);
+    }, []);
 
 
+    useEffect(() => {
 
-    function toggleError(show = false, msg = '') {
-        setError({ show, msg });
-    }
+        if (window.user) {
+            let user = window.user;
+            console.log(user);
+            setAccount({username: user.username, roles: user.roles});
+        }
+    }, []);
 
     return (
         <EshopContext.Provider
             value={{
                 error,
                 isLoading,
-                setPassword, setEmail, handleAccount, account
+                setPassword,
+                setEmail,
+                handleAccount,
+                account,
+                products,
+                setProducts
             }}
         >
             {children}
@@ -73,4 +93,4 @@ const EshopProvider = ({ children }) => {
     );
 };
 
-export { EshopProvider, EshopContext };
+export {EshopProvider, EshopContext};

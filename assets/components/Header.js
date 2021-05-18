@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
     Button,
     Col,
@@ -14,6 +14,7 @@ import {EshopContext} from "../context/context";
 
 const Header = () => {
     const { account } = useContext(EshopContext);
+
 
 
     const [showCart, setShowCart] = useState(false);

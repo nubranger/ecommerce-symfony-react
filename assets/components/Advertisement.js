@@ -7,8 +7,7 @@ const Advertisement = () => {
 
 
     return (
-        showAd &&
-        (
+        showAd && (
             <div className="advertisement">
                 <Container>
                     <div className="advertisement__info">
