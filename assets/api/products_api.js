@@ -33,15 +33,15 @@ export function getProducts() {
         .then((response) => response);
 }
 
-export function deleteProducts(id) {
-    return fetchJson(`/products/${id}`, {
-        method: 'DELETE'
-    });
-}
-
-export function createProducts(Product) {
-    return fetchJson('/products', {
-        method: 'POST',
-        body: JSON.stringify(repLog)
-    });
-}
+// export function deleteProducts(id) {
+//     return fetchJson(`/products/${id}`, {
+//         method: 'DELETE'
+//     });
+// }
+//
+// export function createProducts(Product) {
+//     return fetchJson('/products', {
+//         method: 'POST',
+//         body: JSON.stringify(prod)
+//     });
+// }

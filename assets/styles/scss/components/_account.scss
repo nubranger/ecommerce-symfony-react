@@ -1,0 +1,79 @@
+.account {
+  background-color: white;
+  border: 1px solid #E5E5E5;
+  height: 100vh;
+  width: 350px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9000;
+  overflow-y: auto;
+  animation: moveInSide .2s ease-out;
+  animation-fill-mode: backwards;
+
+
+  &__top {
+    display: inline-block;
+    width: 100%;
+    background-color: #212529;
+    color: white;
+    text-align: center;
+
+    h4 {
+      margin: 0;
+      display: inline-block;
+      letter-spacing: 3px;
+      line-height: 1.9;
+    }
+
+    i {
+      display: inline-block;
+      font-size: 30px;
+      float: right;
+      cursor: pointer;
+      font-weight: 700;
+      color: white;
+      padding: 0 10px;
+    }
+
+  }
+
+  &__form {
+    padding: 10px;
+    border-bottom: solid 1px #6c757d;
+    padding-bottom: 30px;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  &__register {
+    padding: 10px;
+    margin-top: 10px;
+
+    i {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      font-size: 50px;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
+}
+
+@keyframes moveInSide {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

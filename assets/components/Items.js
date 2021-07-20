@@ -1,27 +1,33 @@
-import React, {useContext} from 'react';
-import {Col, Row} from "reactstrap";
-import data from "../data";
-import {EshopContext} from "../context/context";
+import React, {useState} from 'react';
+import {Row} from "reactstrap";
+import Sort from "./Sort";
+import Item from "./Item";
+import {useSortContext} from "../context/sort_context";
+import {useFilterContext} from "../context/filter_context";
 
 const Items = () => {
-    const { products } = useContext(EshopContext);
+    // const {sorted_products} = useSortContext();
+    const {filtered_products}= useFilterContext();
+    const [grid, setGrid] = useState(4);
+
+    const handleGrid = (prop) => {
+        setGrid(prop);
+    }
 
     return (
         <div className="items">
             <div>ACTIVE FILTERS</div>
-            <div>SORT</div>
-            <Row>
-
+            <div className="mt-3">
+                <Sort handleGrid={handleGrid}/>
+            </div>
+            <Row className="mt-3">
                 {
-                    products.map((item) =>
-                        (
-                            <Col key={item.id} lg="3">
-                                <img src={item.img} alt={item.title}/>
-                                <h6>{item.title}</h6>
-                                <p>$ {item.price}</p>
-                            </Col>
+                    filtered_products.map((item) => {
+
+                        return (
+                            <Item key={item.id} grid={grid} item={item}/>
                         )
-                    )
+                    })
                 }
             </Row>
         </div>

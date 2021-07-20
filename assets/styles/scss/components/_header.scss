@@ -1,12 +1,12 @@
 
 .header {
 
-    .sticky {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 9999;
-    }
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+  }
 
   &__middle {
     padding: 10px 0;
@@ -26,6 +26,7 @@
       display: inline-block;
       float: right;
       width: 100%;
+      padding: 0;
 
       li {
         display: inline-block;
@@ -34,6 +35,7 @@
 
         i {
           position: relative;
+          font-size: 25px;
 
           span {
             font-style: normal;
@@ -41,7 +43,7 @@
             right: -15px;
             top: -3px;
             height: 16px;
-            width: 18px;
+            width: 20px;
             background: #000000;
             color: #ffffff;
             border-radius: 50%;
@@ -56,6 +58,8 @@
 
       &-price {
         font-weight: bold;
+        line-height: 2.3;
+        font-size: 18px;
       }
     }
 
@@ -66,53 +70,83 @@
     display: inline-block;
     width: 100%;
     border-bottom: 1px solid #E5E5E5;
-    height: 40px;
+    height: 60px;
 
-    span {
-      padding-top: 8px;
-      padding-bottom: 9px;
-      padding-right: 10px;
-    }
+    &-con {
+      height: 60px;
+      width: 100%;
+      display: inline-block;
 
-    i {
-      padding: 8px;
-    }
 
-    .navbar {
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-
-    &-contact {
-      float: left;
-
-      &-email {
-        float: left;
-        border-right: 1px solid #E5E5E5;
-        padding-top: 5px;
-        padding-bottom: 10px;
+      i {
+        display: inline-block;
+        font-size: 20px;
       }
 
-      &-phone {
+      &-contact {
+        height: inherit;
+        display: inline-block;
         float: left;
-        padding-top: 5px;
-        padding-bottom: 10px;
+        line-height: 60px;
+
+
+        i {
+          padding: 0 10px;
+          display: inline-block;
+        }
+
+        span {
+          display: inline-block;
+          padding-right: 10px;
+        }
+
+        &-email {
+          height: inherit;
+          display: inline-block;
+          float: left;
+          border-right: 1px solid #E5E5E5;
+        }
+
+        &-phone {
+          height: inherit;
+          display: inline-block;
+          float: left;
+
+        }
+      }
+
+      &-social {
+        display: inline-block;
+        float: right;
+        padding-right: 20px;
+        line-height: 60px;
+
+        i {
+          padding: 0 10px;
+        }
+      }
+
+      &-profile {
+        display: inline-block;
+        cursor: pointer;
+        float: right;
+        border-left: 1px solid #E5E5E5;
+        height: inherit;
+        padding-left: 20px;
+
+        i {
+          padding: 0 10px;
+          color: black;
+          font-size: 40px;
+
+          &:hover {
+            color: #6c757d;
+            transition: .2s linear;
+          }
+        }
       }
     }
 
-    &-social {
-      float: right;
-      padding-top: 5px;
-      padding-bottom: 10px;
-      padding-right: 20px;
-    }
-
-    &-profile {
-      float: right;
-      border-left: 1px solid #E5E5E5;
-      padding-top: 5px;
-      padding-bottom: 10px;
-    }
 
   }
 

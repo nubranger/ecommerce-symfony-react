@@ -1,7 +1,8 @@
 import React from 'react';
 import {Col, Container, Row} from "reactstrap";
-import Breadcrumb from "./Breadcrumb";
-import Items from "./Items";
+import Breadcrumb from "../components/Breadcrumb";
+import Items from "../components/Items";
+import Filters from "../components/Filters";
 
 const Shop = () => {
     return (
@@ -10,7 +11,7 @@ const Shop = () => {
                 <Breadcrumb/>
                 <Row>
                     <Col lg="3">
-                        FILTER
+                        <Filters/>
                     </Col>
                     <Col lg="9">
                         <Items/>

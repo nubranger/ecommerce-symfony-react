@@ -10,6 +10,17 @@
     display: inline-block;
     width: 100%;
 
+    .carousel {
+      margin-top: 10px;
+      display: inline-block;
+      width: 90%;
+
+      span {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
     h5 {
       display: inline-block;
       word-wrap: break-word;
@@ -20,10 +31,15 @@
 
     i {
       display: inline-block;
-      font-size: 30px;
+      font-size: 35px;
       float: right;
       cursor: pointer;
       font-weight: 700;
+
+      &:hover {
+        color: #6c757d;
+        transition: .2s linear;
+      }
     }
 
   }

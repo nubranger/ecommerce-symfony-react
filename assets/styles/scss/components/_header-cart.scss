@@ -1,8 +1,17 @@
 .header__middle-bag {
-    position: relative;
+  position: relative;
 
   &-cart {
-    cursor: pointer;
+    //cursor: pointer;
+    i {
+      color: black;
+
+      &:hover {
+        color: #6c757d;
+        transition: .2s linear;
+      }
+    }
+
   }
 
   &-dropdown {
@@ -15,6 +24,31 @@
     animation-fill-mode: backwards;
     right: -150px;
     margin-top: 9px;
+
+    &-top {
+      display: inline-block;
+      width: 100%;
+      background-color: #212529;
+      color: white;
+      text-align: center;
+
+      h4 {
+        margin: 0;
+        display: inline-block;
+        letter-spacing: 3px;
+        line-height: 1.9;
+      }
+
+      .bi-x {
+        display: inline-block;
+        font-size: 30px;
+        float: right;
+        cursor: pointer;
+        font-weight: 700;
+        color: white;
+        padding: 0 10px;
+      }
+    }
 
     &-buttons {
       padding: 15px;
@@ -34,34 +68,76 @@
         }
       }
 
-      div:nth-child(2) {
-        background-color: #212529;
-        color: white;
-        text-align: center;
-        margin-bottom: 5px;
-        padding: 5px;
-        cursor: pointer;
-        //font-weight: bold;
-
-      }
-
-      div:nth-child(3) {
-        font-weight:bolder;
-        color: white;
-        cursor: pointer;
-        padding: 5px;
-        text-align: center;
-        background-color: #6c757d;
+      button {
+        width: 100%;
       }
     }
 
 
     &-items {
-      height: 200px;
+      max-height: 200px;
       overflow-y: auto;
 
+      &-normal {
+        display: inline-block;
+        width: 45%;
+
+        p {
+          margin: 0;
+        }
+      }
+
+      &-discount {
+        display: inline-block;
+        width: 45%;
+        margin: 0;
+        padding: 5px 0;
+
+        p {
+          display: inline-block;
+          text-decoration: line-through;
+          margin: 0;
+        }
+
+        span {
+          display: inline-block;
+          font-size: 18px;
+          color: red;
+          font-weight: bold;
+        }
+      }
+
+      &-amount {
+        display: inline-block;
+        width: 25%;
+        margin: 0;
+        padding: 5px 0;
+
+        i {
+          display: inline;
+          cursor: pointer;
+          padding: 9px;
+        }
+
+        .bi-caret-left {
+          font-size: 16px;
+        }
+
+        .bi-caret-right {
+          font-size: 16px;
+        }
+        p {
+          display: inline;
+          font-size: 16px;
+          margin: 0;
+        }
+      }
+
       ul {
+        display: inline-block;
+        width: 100%;
         padding: 5px;
+
 
         li {
           display: inline-block;
@@ -71,20 +147,19 @@
           border-bottom: 1px solid #E5E5E5;
 
           img {
+            display: inline-block;
             width: 20%;
             float: left;
           }
 
-          div {
+          h6 {
+            display: inline-block;
             width: 70%;
-            float: left;
-
-            p {
-              margin: 0;
-            }
           }
 
-          i {
+
+          .bi-x {
+            display: inline-block;
             width: 8%;
             float: right;
             line-height: 2.4;
@@ -94,6 +169,8 @@
           }
         }
       }
+
+
 
 
     }

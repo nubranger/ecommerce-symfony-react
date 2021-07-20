@@ -1,0 +1,70 @@
+.sort {
+  display: inline-block;
+  width: 100%;
+  border-top: 1px solid #E5E5E5;
+
+  .page-link {
+    font-size: 15px;
+  }
+
+  &__filters {
+    display: inline-block;
+  }
+
+  &__name {
+    display: inline-block;
+    padding: 0 10px;
+    border-right: 1px solid #E5E5E5;
+
+    i {
+      display: inline-block;
+    }
+
+    span {
+      display: inline-block;
+      padding: 10px;
+    }
+
+    nav {
+      display: inline-block;
+    }
+  }
+
+  &__price {
+    display: inline-block;
+    padding: 0 10px;
+    border-right: 1px solid #E5E5E5;
+
+    i {
+      display: inline-block;
+    }
+
+    span {
+      display: inline-block;
+      padding: 10px;
+    }
+
+    nav {
+      display: inline-block;
+    }
+  }
+
+  &__grid {
+    display: inline-block;
+    padding: 0 10px;
+    border-right: 1px solid #E5E5E5;
+
+    i {
+      display: inline-block;
+    }
+
+    span {
+      display: inline-block;
+      padding: 10px;
+    }
+
+    nav {
+      display: inline-block;
+    }
+  }
+}

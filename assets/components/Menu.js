@@ -1,12 +1,15 @@
 import React, {useEffect, useRef, useState} from 'react';
-import HeaderCart from "./HeaderCart";
+import {Link} from "react-router-dom";
+import {useFavoriteContext} from "../context/favorite_context";
+import {useCartContext} from "../context/cart_context";
 
 const Menu = () => {
 
-    const [showCart, setShowCart] = useState(false);
     const menuRef = useRef(null);
     const [menuPosition, setMenuPosition] = useState(null);
     const [showMenuCart, setShowMenuCart] = useState(false);
+    const {favorite} = useFavoriteContext();
+    const {total_amount_discount, cart} = useCartContext();
 
     useEffect(() => {
 
@@ -30,16 +33,11 @@ const Menu = () => {
 
     }, [menuPosition]);
 
-
-
-
     return (
         <div ref={menuRef} className="sticky-top menu">
             <div className="container">
                 <div className="navbar navbar-expand-md navbar-light bg-dark">
-
                     <div className="navbar-brand">
-
                         <div className="dropdown">
                             <button
                                 className="btn btn-secondary dropdown-toggle"
@@ -64,56 +62,36 @@ const Menu = () => {
                                 </li>
                             </ul>
                         </div>
-
                     </div>
                     <div className="navbar-nav nav-pills">
-                        <button className="nav-link active" aria-current="page">HOME</button>
-                        <button className="nav-link">SHOP</button>
-                        <button className="nav-link">CONTACT</button>
+                        <Link to="/">
+                            <button className="nav-link active" aria-current="page">HOME</button>
+                        </Link>
+                        <Link to="/shop">
+                            <button className="nav-link">SHOP</button>
+                        </Link>
+                        <Link to="/contact">
+                            <button className="nav-link">CONTACT</button>
+                        </Link>
                     </div>
-
-
                     <ul className={showMenuCart ? "menu__info" : "fade menu__info"}>
                         <li className="menu__info-cart-price">
-                            $ 777.00
+                            ${total_amount_discount}
                         </li>
                         <li className="menu__info-bag">
-
                             <div
-                                // onMouseEnter={() => setShowCart(true)}
                                 className="menu__info-bag-cart">
                                 <i className="bi bi-bag">
-                                    <span>77</span>
+                                    <span>{cart.length}</span>
                                 </i>
                             </div>
-                            {
-                                showCart && (
-                                    <div
-                                        // onMouseLeave={() => setShowCart(false)}
-                                        className="menu__info-bag-dropdown"
-                                    >
-                                        <HeaderCart/>
-                                        <div className="menu__info-bag-dropdown-buttons">
-                                            <div>
-                                                <h6>TOTAL:</h6>
-                                                <p>$ 777.00</p>
-                                            </div>
-                                            <div>VIEW CART</div>
-                                            <div>BUY NOW</div>
-                                        </div>
-                                    </div>
-                                )
-                            }
-
                         </li>
                         <li className="menu__info-heart">
                             <i className="bi bi-heart">
-                                <span>2</span>
+                                <span>{favorite.length}</span>
                             </i>
                         </li>
                     </ul>
-
-
                 </div>
             </div>
         </div>

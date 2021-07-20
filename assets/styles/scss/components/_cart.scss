@@ -1,0 +1,177 @@
+.cart {
+
+  &__summary {
+    display: inline-block;
+    width: 100%;
+    border-radius: .2rem;
+
+    &--promo {
+      display: inline-block;
+      border: 1px solid #E5E5E5;
+      border-radius: .2rem;
+      width: 100%;
+      padding: 5px;
+
+
+      h5 {
+        padding: 10px;
+        border-bottom: 1px solid #E5E5E5;
+      }
+    }
+
+    &--info {
+      margin-top: 10px;
+      border: 1px solid #E5E5E5;
+      border-radius: .2rem;
+      padding: 5px;
+
+      &-top {
+        border-bottom: 1px solid #E5E5E5;
+
+        h5 {
+          padding: 10px;
+        }
+      }
+
+      &-middle {
+        display: inline-block;
+        width: 100%;
+        padding: 10px 5px;
+
+        div {
+          display: inline-block;
+          width: 100%;
+
+          h6 {
+            display: inline-block;
+          }
+
+          p {
+            display: inline-block;
+            float: right;
+          }
+
+
+        }
+
+      }
+
+      &-bottom {
+        border-top: 1px solid #E5E5E5;
+        padding: 10px;
+
+        h5 {
+          display: inline-block;
+        }
+
+        p {
+          display: inline-block;
+          float: right;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: 10px;
+
+    &--product {
+      margin-top: 20px;
+      display: flex;
+      width: 100%;
+      border-bottom: 1px solid #E5E5E5;
+      flex-direction: row;
+      align-items: flex-start;
+      padding-bottom: 10px;
+
+      &-item {
+        display: flex;
+        width: 60%;
+        align-items: center;
+        flex-direction: row;
+
+        p {
+          display: inline-block;
+          word-wrap: break-word;
+          width: 50%;
+          font-weight: bold;
+        }
+
+        img {
+          width: 50%;
+        }
+      }
+
+      &-status {
+        display: flex;
+        width: 50%;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+
+        .form-select {
+          display: inline-block;
+          width: 20%;
+          text-align: center;
+          float: right;
+        }
+
+        &-discount {
+          display: inline-block;
+          width: 33%;
+          text-align: center;
+
+          p {
+            text-decoration: line-through;
+            display: inline-block;
+            margin: 0;
+          }
+
+          span {
+            font-size: 18px;
+            color: red;
+            font-weight: bold;
+          }
+        }
+
+        h6 {
+          display: inline-block;
+          width: 33%;
+          text-align: center;
+          float: right;
+        }
+      }
+    }
+
+  }
+
+
+  &__top {
+
+    &--info {
+      display: inline-block;
+      width: 100%;
+      border-bottom: 1px solid #E5E5E5;
+
+      &-item {
+        display: inline-block;
+        width: 50%;
+      }
+
+      &-status {
+        display: inline-block;
+        width: 50%;
+
+        h6 {
+          display: inline-block;
+          width: 33%;
+          text-align: center;
+        }
+      }
+    }
+
+  }
+
+}
