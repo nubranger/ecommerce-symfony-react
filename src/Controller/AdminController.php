@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Products;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,6 +26,38 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
         ]);
+    }
+
+    /**
+     * @Route("/users", name="admin_users")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function usersIndex(): Response
+    {
+        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+
+        return $this->render('admin/users/users.html.twig', [
+            'users' => $users,
+        ]);
+    }
+
+    /**
+     * @Route("/users/delete/{id}", name="admin_user_delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function usersDelete($id): Response
+    {
+        $user = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->find($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+//        $this->addFlash('danger', "User {$product->getName()} was deleted.");
+
+        return $this->redirectToRoute('admin_users');
     }
 
     /**

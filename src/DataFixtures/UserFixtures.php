@@ -25,6 +25,7 @@ class UserFixtures extends Fixture
 
         $user2 = new User();
         $user2->setEmail('user@mail.com');
+        $user1->setRoles(['ROLE_REGISTERED']);
         $user2->setPassword($this->passwordHasher->hashPassword($user2, 'pass'));
 
         $manager->persist($user1);

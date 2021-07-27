@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ca60cc0-bb72-4ee1-b38c-179a39b5c0c2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/reducers/profile_reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/reducers/profile_reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/admin/_nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/scss/admin/_nav.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/DataFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/DataFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/nav.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/products/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/products/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/products/products.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/products/products.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +161,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images/phones" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/users" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -174,11 +171,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\admin\users" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\images\phones" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\images" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\styles\scss\admin" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\admin" />
-      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\public\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\admin\products" />
@@ -230,7 +227,7 @@
       <workItem from="1621327443781" duration="17611000" />
       <workItem from="1626804789616" duration="48476000" />
       <workItem from="1627326125745" duration="2000" />
-      <workItem from="1627326168541" duration="39960000" />
+      <workItem from="1627326168541" duration="43380000" />
     </task>
     <servers />
   </component>

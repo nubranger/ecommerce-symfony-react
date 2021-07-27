@@ -25,7 +25,7 @@ class DataFixtures extends Fixture
             $product = new Products();
             $product->setTitle('OnePlus Nord N10 5G');
             $product->setDescription('Very nice smartphone');
-            $product->setAmount(4);
+            $product->setStock(4);
             $product->setPrice(444.6);
             $product->setActive("active");
             $product->setCategory($category1);

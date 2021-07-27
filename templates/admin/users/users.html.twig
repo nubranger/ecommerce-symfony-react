@@ -1,0 +1,87 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Users list{% endblock %}
+
+{% block body %}
+    <div class="products">
+        <h1>Users</h1>
+
+        <table class="table table-light table-striped">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">ID</th>
+                <th scope="col">Roles</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Online</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.surname }}</td>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.roles|first }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            {{ user.online }}
+                        </td>
+
+                        <td>
+                            <div class="d-flex align-items-center m-1">
+                                <a
+{#                                        href="{{ path('admin_products_edit', {id:product.id}) }}"#}
+                                        type="button"
+                                        class="btn btn-outline-secondary m-1">Edit</a>
+                                <!-- Button trigger modal -->
+                                <a type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                   data-bs-target="{{ '#user' ~ user.id }}"
+                                >
+                                    Delete
+                                </a>
+                            </div>
+
+                        </td>
+                    </tr>
+
+                <!-- Modal -->
+                <div class="modal fade" id="{{ 'user' ~ user.id }}" data-bs-backdrop="static"
+                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModal">Delete</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete {{ user.name }}?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">Close
+                                </button>
+                                <form action="{{ path('admin_user_delete', {id:user.id}) }}" method="POST">
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% if users is empty %}
+            <p class="empty">There are no users to show.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
