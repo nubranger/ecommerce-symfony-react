@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\Products;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -58,6 +59,36 @@ class AdminController extends AbstractController
             'categories' => $categories,
 //            'errors' => $r->getSession()->getFlashBag()->get('errors', [])
         ]);
+    }
+
+    /**
+     * @Route("/products/update/{id}", name="admin_products_update", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function productUpdate(Request $r, $id)
+    {
+        $category = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->find($r->request->get('product_category_id'));
+
+        $product = $this->getDoctrine()
+            ->getRepository(Products::class)
+            ->find($id);
+
+        $product
+            ->setTitle($r->request->get('product_title'))
+            ->setPrice($r->request->get('product_price'))
+            ->setActive($r->request->get('product_active'))
+            ->setDiscount($r->request->get('product_discount'))
+            ->setDescription($r->request->get('product_description'))
+            ->setCategory($category)
+            ->setStock($r->request->get('product_stock'));
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($product);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_products');
     }
 
     /**

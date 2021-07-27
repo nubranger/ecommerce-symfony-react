@@ -7,7 +7,7 @@
     <div class="container">
         <h1 class="text-white">Edit Product</h1>
         <form
-{#                action="{{ path('animal_update', {id:animal.id}) }}" #}
+                action="{{ path('admin_products_update', {id:product.id}) }}"
                 method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
@@ -15,17 +15,47 @@
                     <input type="file" name="image">
                     <hr>
 
-                    <label for="animal_name" class="form-label">Title</label>
-                    <input class="form-control" type="text" name="animal_name" id="animal_name"
+                    <div class="d-flex justify-content-center">
+                        {% if product.images %}
+                            {% for image in product.images %}
+
+
+                                <img src="{{ asset('build/images/phones/' ~ image) }}"
+                                     alt="{{ image }}" width="100" height="100">
+                            {% endfor %}
+                        {% else %}
+                            <img src="{{ asset('build/images/noimage.jpg') }}" alt="" width="100" height="100">
+                        {% endif %}
+                    </div>
+
+                    <hr>
+
+                    <select class="form-select" name="product_active" aria-label="Product activation">
+                        <option {% if product.active == "active" %} selected {% endif %} value="active">active</option>
+                        <option {% if product.active == "inactive" %} selected {% endif %} value="inactive">inactive
+                        </option>
+                    </select>
+
+                    <label for="product_title" class="form-label">Title</label>
+                    <input class="form-control" type="text" name="product_title" id="product_title"
                            value="{{ product.title }}">
-                    <label for="animal_book" class="form-label">Description</label>
+                    <label for="product_price" class="form-label">Price</label>
+                    <input class="form-control" type="text" name="product_price" id="product_price"
+                           value="{{ product.price }}">
+                    <label for="product_discount" class="form-label">Discount</label>
+                    <input class="form-control" type="text" name="product_discount" id="product_discount"
+                           value="{{ product.discount }}">
+                    <label for="product_stock" class="form-label">In stock</label>
+                    <input class="form-control" type="text" name="product_stock" id="product_stock"
+                           value="{{ product.stock }}">
+                    <label for="product_description" class="form-label">Description</label>
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" name="animal_book"
+                        <textarea class="form-control" placeholder="Leave a comment here" name="product_description"
                                   id="floatingTextarea">{{ product.description }}</textarea>
                         <label for="floatingTextarea">Comments</label>
                     </div>
-                    <label for="animal_manager" class="form-label">Specialist</label>
-                    <select name="animal_manager_id" id="animal_manager" class="form-select">
+                    <label for="product_category" class="form-label">Specialist</label>
+                    <select name="product_category_id" id="product_category" class="form-select">
                         {% for category in categories %}
                             <option value="{{ category.id }}" {% if category.id == product.category.id %} selected {% endif %}>
                                 {{ category.name }}
@@ -33,9 +63,9 @@
                         {% endfor %}
                     </select>
                 </div>
-{#                <div class="col-md-6 mt-2">#}
-{#                    {% include 'validations/validation.html.twig' %}#}
-{#                </div>#}
+                {# <div class="col-md-6 mt-2"> #}
+                {# {% include 'validations/validation.html.twig' %} #}
+                {# </div> #}
             </div>
 
             <div class="row mt-2">

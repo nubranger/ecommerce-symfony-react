@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Api\ApiRoute;
 use App\Entity\Products;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,8 +23,8 @@ class ProductsController extends AbstractController
     {
         $repository = $entityManager->getRepository(Products::class);
         $products = $repository->findAll();
-//        dd($products);
 
         return $this->json($products);
     }
+
 }

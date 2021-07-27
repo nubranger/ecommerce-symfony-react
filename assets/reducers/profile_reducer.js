@@ -9,23 +9,13 @@ const profile_reducer = (state, action) => {
 
     if (action.type === LOAD_USER) {
 
-        let username;
-        let roles;
+        let username = "";
+        let roles = "";
 
         if (window.user) {
             let user = window.user;
             username = user.username;
-            if (user.roles.isArray) {
-                roles = user.roles.find(item => {
-                    if (item === "ROLE_ADMIN") {
-                        return "ROLE_ADMIN";
-                    } else {
-                        return "ROLE_USER"
-                    }
-                });
-            } else {
-                roles = user.roles;
-            }
+            roles = user.roles[0];
         }
 
         return {...state, username: username, roles: roles}
