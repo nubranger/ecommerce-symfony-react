@@ -1,0 +1,23 @@
+.navigation {
+  //display: flex;
+  //flex-wrap: nowrap;
+  //height: 100vh;
+  //max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  .nav-link.active {
+    background-color: #5a5a5a;
+  }
+
+  .bi {
+    vertical-align: -.125em;
+    pointer-events: none;
+    fill: currentColor;
+  }
+
+  .dropdown-toggle {
+    outline: 0;
+  }
+}
+

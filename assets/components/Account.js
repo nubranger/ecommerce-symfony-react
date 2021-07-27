@@ -7,6 +7,7 @@ const Account = () => {
     const [password, setPassword] = useState("");
     const {isProfileBarOpen, closeProfileBar, handleProfile} = useProfileContext();
 
+
     return (
         isProfileBarOpen && (
             <div className="account">
@@ -18,7 +19,8 @@ const Account = () => {
                     <Form onSubmit={(e) => e.preventDefault()}>
                         <label htmlFor="validationEmail" className="form-label">Email</label>
                         <div className="input-group has-validation">
-                            <span className="input-group-text" id="inputGroupPrepend"><i className="bi bi-at"/></span>
+                                    <span className="input-group-text" id="inputGroupPrepend"><i
+                                        className="bi bi-at"/></span>
                             <input onChange={(e) => setEmail(e.target.value)}
                                    type="email"
                                    className="form-control"
@@ -27,7 +29,8 @@ const Account = () => {
                         </div>
                         <label htmlFor="validationPassword" className="mt-2 form-label">Password</label>
                         <div className="input-group has-validation">
-                            <span className="input-group-text" id="inputGroupPrepend"><i className="bi bi-shield-lock"/></span>
+                                    <span className="input-group-text" id="inputGroupPrepend"><i
+                                        className="bi bi-shield-lock"/></span>
                             <input onChange={(e) => setPassword(e.target.value)} type="password"
                                    className="form-control"
                                    id="validationPassword"
@@ -38,7 +41,7 @@ const Account = () => {
                             <Input type="checkbox" name="remember" id="Remember"/>
                             <a className="float-end" href="/forgot-password">Forgot password?</a>
                         </div>
-                        <Button onClick={() => handleProfile(email, password)} className="mt-2">Sign in</Button>
+                        <Button onClick={() => handleProfile({email, password})} className="mt-2">Sign in</Button>
                     </Form>
                 </div>
 
@@ -52,6 +55,7 @@ const Account = () => {
                 </div>
             </div>
         )
+
     );
 };
 

@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
@@ -17,6 +16,7 @@ class SecurityController extends AbstractController
     {
 
         $user = $this->getUser();
+        dump($user);
 
 
         if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
@@ -25,15 +25,17 @@ class SecurityController extends AbstractController
             ], 400);
         }
 
-        return new Response(null, 204, [
-            'username' => $user->getUsername(),
-            'roles' => $user->getRoles(),
-        ]);
-
-//        return $this->json([
-//            'username' => $user->getUsername(),
+//        return new Response(null, 204, [
+//            'username' => $user->getUserIdentifier(),
 //            'roles' => $user->getRoles(),
 //        ]);
+
+        return $this->json([
+            // The getUserIdentifier() method was introduced in Symfony 5.3.
+            // In previous versions it was called getUsername()
+            'username' => $user->getUserIdentifier(),
+            'roles' => $user->getRoles(),
+        ]);
     }
 
     /**

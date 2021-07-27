@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProductsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,6 +24,11 @@ class Products
     private $title;
 
     /**
+     * @ORM\Column(type="string", columnDefinition="ENUM('active', 'inactive')")
+     */
+    private $active;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $description;
@@ -33,14 +39,29 @@ class Products
     private $price;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
-    private $img;
+    private $discount;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $amount;
+    private $stock;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     */
+    private $category;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $images = [];
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -83,27 +104,69 @@ class Products
         return $this;
     }
 
-    public function getImg(): ?string
+    public function getDiscount(): ?float
     {
-        return $this->img;
+        return $this->discount;
     }
 
-    public function setImg(?string $img): self
+    public function setDiscount(?float $discount): self
     {
-        $this->img = $img;
+        $this->discount = $discount;
 
         return $this;
     }
 
-    public function getAmount(): ?int
+    public function getActive()
     {
-        return $this->amount;
+        return $this->active;
     }
 
-    public function setAmount(int $amount): self
+    public function setActive($active): self
     {
-        $this->amount = $amount;
+        $this->active = $active;
 
         return $this;
     }
+
+    public function getStock(): ?int
+    {
+        return $this->stock;
+    }
+
+    public function setStock(?int $stock): self
+    {
+        $this->stock = $stock;
+
+        return $this;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return '/images/phones/' . $this->getImages()->first();
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getImages(): array
+    {
+        return $this->images;
+    }
+
+    public function setImages(?array $images): self
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
 }

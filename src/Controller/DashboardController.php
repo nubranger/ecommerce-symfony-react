@@ -20,7 +20,7 @@ class DashboardController extends AbstractController
         $roles = "";
 
         if ($user !== null) {
-            $username = $user->getUsername();
+            $username = $user->getUserIdentifier();
             $roles = $user->getRoles();
         }
 

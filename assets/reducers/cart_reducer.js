@@ -64,7 +64,6 @@ const cart_reducer = (state, action) => {
 
         const tempCart = state.cart.map((item) => {
             if (item.id === id) {
-                console.log(parseInt(value));
                 if (Number.isInteger(parseInt(value))) {
                     let newAmount = value
                     if (newAmount > item.stock) {
@@ -76,6 +75,9 @@ const cart_reducer = (state, action) => {
                     let newAmount = item.amount + 1
                     if (newAmount > item.stock) {
                         newAmount = item.stock
+                    }
+                    if (newAmount > 5) {
+                        newAmount = 5
                     }
                     return {...item, amount: newAmount}
                 }

@@ -2,89 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ca60cc0-bb72-4ee1-b38c-179a39b5c0c2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ecommerce-symfony-react.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ecommerce-symfony-react.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/api/products_api.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/Account.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/Advertisement.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/Breadcrumb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/Footer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/Header.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/HeaderCart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/HeaderHeart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/Hero.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/Items.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/Loading.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/Menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/Shop.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/context/context.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/components/Account.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/components/Account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/components/CartItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/components/CartItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/components/HeaderTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/components/HeaderTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/context/profile_context.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/context/profile_context.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/hero/img1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/hero/img2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/hero/img3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/pages/Dashboard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/pages/Error.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/pages/Pages.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_advertisement.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_breadcrumb.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_footer.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_header-cart.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_header-heart.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_header.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_hero.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_items.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_loading.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_menu-info.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_menu.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/components/_shop.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/scss/main.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/console" beforeDir="false" afterPath="$PROJECT_DIR$/bin/console" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/phpunit" beforeDir="false" afterPath="$PROJECT_DIR$/bin/phpunit" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/assets.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/assets.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/cache.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/cache.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/dev/monolog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/dev/monolog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/reducers/cart_reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/reducers/cart_reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/reducers/profile_reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/reducers/profile_reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/prod/deprecations.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/prod/deprecations.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/prod/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/prod/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/prod/monolog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/prod/webpack_encore.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/prod/webpack_encore.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/routing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/routing.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/test/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/test/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/test/monolog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/test/monolog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/test/validator.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/test/validator.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/test/webpack_encore.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/test/webpack_encore.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/validator.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/validator.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/preload.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/preload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210517112456.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/DataFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/DataFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/ApiCsrfValidationSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/ApiCsrfValidationSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -238,7 +175,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images/phones" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -248,16 +185,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets" />
-      <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\assets" />
-      <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\src\DataFixtures" />
-      <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\assets\components" />
-      <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\assets\styles\scss" />
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\images\phones" />
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\images" />
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\styles\scss\admin" />
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\admin" />
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\public\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\admin\products" />
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets" />
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\admin" />
       <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\assets\context" />
       <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\assets" />
-      <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\assets\pages" />
     </key>
   </component>
   <component name="RunManager" selected="npm.watch">
@@ -300,7 +239,9 @@
       <workItem from="1621247573415" duration="29481000" />
       <workItem from="1621318977874" duration="724000" />
       <workItem from="1621327443781" duration="17611000" />
-      <workItem from="1626804789616" duration="9027000" />
+      <workItem from="1626804789616" duration="48476000" />
+      <workItem from="1627326125745" duration="2000" />
+      <workItem from="1627326168541" duration="14983000" />
     </task>
     <servers />
   </component>
@@ -317,5 +258,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {useProfileContext} from "../context/profile_context";
 
 const HeaderTop = () => {
-    const {openProfileBar} = useProfileContext();
+    const {openProfileBar, username, roles} = useProfileContext();
 
     return (
         <div className="header__top">
@@ -21,8 +21,49 @@ const HeaderTop = () => {
                         </div>
                     </div>
                     <div className="header__top-con-profile">
-                        <i className="secondary bi bi-person-circle"
-                           onClick={openProfileBar}/>
+                        {
+                            username
+                                ?
+                                (
+                                    <>
+
+                                        <i className="secondary bi bi-person-circle"
+                                           id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false"
+                                        />
+
+                                        <ul className="dropdown-menu text-small shadow" style={{zIndex: 1200}}
+                                            aria-labelledby="dropdownUser2">
+                                            {
+                                                roles === "ROLE_ADMIN"
+                                                    ?
+                                                    (
+                                                        <li><a className="dropdown-item" href="/admin">Control panel</a>
+                                                        </li>
+                                                    )
+                                                    :
+                                                    (
+                                                        <>
+                                                        <li><a className="dropdown-item" href="#">Orders</a></li>
+                                                        <li><a className="dropdown-item" href="#">Address</a></li>
+                                                        <li><a className="dropdown-item" href="#">Account info</a></li>
+                                                        </>
+                                                    )
+
+                                            }
+                                            <li>
+                                                <hr className="dropdown-divider"/>
+                                            </li>
+                                            <li><a href="/logout" className="dropdown-item">Sign out</a></li>
+                                        </ul>
+                                    </>
+
+                                )
+                                :
+                                <i className="secondary bi bi-person-circle"
+                                   onClick={openProfileBar}/>
+                        }
+
+
                         <Link to="/cart">
                             <i className="bi bi-bag"/>
                         </Link>

@@ -1,0 +1,53 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class="text-white">Edit Product</h1>
+        <form
+{#                action="{{ path('animal_update', {id:animal.id}) }}" #}
+                method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Image</h6>
+                    <input type="file" name="image">
+                    <hr>
+
+                    <label for="animal_name" class="form-label">Title</label>
+                    <input class="form-control" type="text" name="animal_name" id="animal_name"
+                           value="{{ product.title }}">
+                    <label for="animal_book" class="form-label">Description</label>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" name="animal_book"
+                                  id="floatingTextarea">{{ product.description }}</textarea>
+                        <label for="floatingTextarea">Comments</label>
+                    </div>
+                    <label for="animal_manager" class="form-label">Specialist</label>
+                    <select name="animal_manager_id" id="animal_manager" class="form-select">
+                        {% for category in categories %}
+                            <option value="{{ category.id }}" {% if category.id == product.category.id %} selected {% endif %}>
+                                {{ category.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+{#                <div class="col-md-6 mt-2">#}
+{#                    {% include 'validations/validation.html.twig' %}#}
+{#                </div>#}
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-12">
+                    <div class="btn-group" role="group">
+                        <button type="submit" class="btn btn-outline-success me-2">Save</button>
+                        <a class="btn btn-outline-secondary me-2" href="{{ path('admin_products') }}">Back</a>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="token" value="{{ csrf_token('') }}"/>
+        </form>
+    </div>
+
+{% endblock %}

@@ -29,7 +29,7 @@ const CartItem = ({item}) => {
                 {item.discount ? <div className="cart__bottom--product-status-discount"><p>${item.price}</p>
                     <span>${item.discount}</span></div> : <h6>${item.price}</h6>}
 
-                <select onChange={(e) => toggleAmount(item.id, e.target.value)} className="form-select"
+                <select value={item.amount} onChange={(e) => toggleAmount(item.id, e.target.value)} className="form-select"
                         aria-label="Select quantity">
                     {
                         quantity()

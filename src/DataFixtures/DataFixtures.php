@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
 use App\Entity\Products;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -10,16 +11,28 @@ class DataFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        $category1 = new Category();
+        $category1->setName("Phones");
+
+        $category2 = new Category();
+        $category2->setName("Computers");
+
+        $manager->persist($category1);
+        $manager->persist($category2);
+        $manager->flush();
+
         for ($i = 1; $i < 10; $i++) {
             $product = new Products();
             $product->setTitle('OnePlus Nord N10 5G');
             $product->setDescription('Very nice smartphone');
             $product->setAmount(4);
             $product->setPrice(444.6);
-            $product->setImg('https://purepng.com/public/uploads/large/purepng.com-asus-smartphonepersonal-computersmartphonemobile-operating-systemcellular-phonephilipsandroid-1701528390817qbpuc.png');
+            $product->setActive("active");
+            $product->setCategory($category1);
+            $product->setImages(["phone1.png", "phone2.png", "phone3.png",]);
 
             $manager->persist($product);
-        $manager->flush();
+            $manager->flush();
         }
     }
 }
