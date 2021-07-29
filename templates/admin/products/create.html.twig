@@ -1,0 +1,62 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Create Product{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class="text-white">Create Product</h1>
+        <form
+                action="{{ path('admin_products_store') }}"
+                method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Image</h6>
+                    <input type="file" name="image">
+                    <hr>
+
+                    <select class="form-select" name="product_active" aria-label="Product activation">
+                        <option value="active">active</option>
+                        <option value="inactive">inactive
+                        </option>
+                    </select>
+
+                    <label for="product_title" class="form-label">Title</label>
+                    <input class="form-control" type="text" name="product_title" id="product_title">
+                    <label for="product_price" class="form-label">Price</label>
+                    <input class="form-control" type="text" name="product_price" id="product_price">
+                    <label for="product_discount" class="form-label">Discount</label>
+                    <input class="form-control" type="text" name="product_discount" id="product_discount">
+                    <label for="product_stock" class="form-label">In stock</label>
+                    <input class="form-control" type="text" name="product_stock" id="product_stock">
+                    <label for="product_description" class="form-label">Description</label>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" name="product_description"
+                                  id="floatingTextarea"></textarea>
+                    </div>
+                    <label for="product_category" class="form-label">Specialist</label>
+                    <select name="product_category_id" id="product_category" class="form-select">
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">
+                                {{ category.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-6 mt-2">
+                    {% include 'validations/validation.html.twig' %}
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-12">
+                    <div class="btn-group" role="group">
+                        <button type="submit" class="btn btn-outline-success me-2">Save</button>
+                        <a class="btn btn-outline-secondary me-2" href="{{ path('admin_products') }}">Back</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

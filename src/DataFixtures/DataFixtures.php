@@ -29,7 +29,7 @@ class DataFixtures extends Fixture
             $product->setPrice(444.6);
             $product->setActive("active");
             $product->setCategory($category1);
-            $product->setImages(["phone1.png", "phone2.png", "phone3.png",]);
+            $product->setImages([]);
 
             $manager->persist($product);
             $manager->flush();

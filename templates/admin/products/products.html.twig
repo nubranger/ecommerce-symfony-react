@@ -5,30 +5,9 @@
 {% block body %}
     <div class="products">
         <h1>Products</h1>
-        {% if errors is defined and errors|length > 0 %}
-            <div class="alert alert-danger d-flex align-items-center" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                    <use xlink:href="#exclamation-triangle-fill"/>
-                </svg>
-                <div>
-                    {% for error in errors %}
-                        {{ error }}
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
-        {% if success is defined and success|length > 0 %}
-            <div class="alert alert-success d-flex align-items-center" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
-                    <use xlink:href="#check-circle-fill"/>
-                </svg>
-                <div>
-                    {% for s in success %}
-                        {{ s }}
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
+        <div>
+            {% include 'validations/validation.html.twig' %}
+        </div>
 
         <table class="table table-light table-striped">
             <thead>
@@ -57,7 +36,7 @@
                         <td>
                             <div class="d-flex justify-content-center">
                                 {% if product.images %}
-                                    <img src="{{ asset('build/images/phones/' ~ product.images|first) }}"
+                                    <img src="{{ asset('/uploads/products_images/' ~ product.images|first) }}"
                                          alt="{{ product.images|first }}" width="100" height="100">
                                     {# <img src="{{ asset('build/images/noimage.jpg') }}" alt="" width="100" height="100"> #}
                                 {% else %}

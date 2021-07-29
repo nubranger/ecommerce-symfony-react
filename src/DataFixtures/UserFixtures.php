@@ -21,11 +21,17 @@ class UserFixtures extends Fixture
         $user1 = new User();
         $user1->setEmail('admin@mail.com');
         $user1->setRoles(['ROLE_ADMIN']);
+        $user1->setName("Mike");
+        $user1->setSurname("Balionelis");
+        $user1->setOnline("yes");
         $user1->setPassword($this->passwordHasher->hashPassword($user1, 'pass'));
 
         $user2 = new User();
         $user2->setEmail('user@mail.com');
-        $user1->setRoles(['ROLE_REGISTERED']);
+        $user2->setRoles(['ROLE_REGISTERED']);
+        $user2->setName("John");
+        $user2->setSurname("Doe");
+        $user2->setOnline("no");
         $user2->setPassword($this->passwordHasher->hashPassword($user2, 'pass'));
 
         $manager->persist($user1);

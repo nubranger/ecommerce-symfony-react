@@ -36,7 +36,7 @@
                         <td>
                             <div class="d-flex align-items-center m-1">
                                 <a
-{#                                        href="{{ path('admin_products_edit', {id:product.id}) }}"#}
+                                        href="{{ path('admin_user_edit', {id:user.id}) }}"
                                         type="button"
                                         class="btn btn-outline-secondary m-1">Edit</a>
                                 <!-- Button trigger modal -->
@@ -78,6 +78,10 @@
             {% endfor %}
             </tbody>
         </table>
+
+        <div>
+            {% include 'validations/validation.html.twig' %}
+        </div>
 
         {% if users is empty %}
             <p class="empty">There are no users to show.</p>

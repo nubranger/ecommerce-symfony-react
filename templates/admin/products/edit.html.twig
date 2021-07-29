@@ -5,30 +5,51 @@
 {% block body %}
 
     <div class="container">
-        <h1 class="text-white">Edit Product</h1>
-        <form
-                action="{{ path('admin_products_update', {id:product.id}) }}"
-                method="POST" enctype="multipart/form-data">
+        <h1>Edit Product</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <form
+                        action="{{ path('admin_products_image_upload', {id:product.id}) }}"
+                        method="POST" enctype="multipart/form-data">
+
+                    <h6>Upload images</h6>
+                    <input type="file" name="image">
+                    <div class="mt-1">
+                        <button type="submit" class="btn btn-outline-success me-2">Upload</button>
+                    </div>
+                </form>
+
+
+                <hr>
+                <div class="d-flex flex-wrap justify-content-center">
+                    {% if product.images %}
+                        {% for image in product.images %}
+                            <form action="{{ path('admin_products_image_delete', {id: product.id}) }}" method="POST">
+                                <div class="m-1">
+                                    <input name="image_to_delete" value="{{ image }}" type="hidden">
+                                    <img src="{{ asset('/uploads/products_images/' ~ image) }}"
+                                         alt="{{ image }}" width="100" height="100">
+                                    <div class="d-flex justify-content-center mt-1">
+                                        <button type="submit" class="btn btn-outline-danger me-2">Delete</button>
+                                    </div>
+                                </div>
+                            </form>
+                        {% endfor %}
+                    {% else %}
+                        <img src="{{ asset('build/images/noimage.jpg') }}" alt="" width="100" height="100">
+                    {% endif %}
+                </div>
+                <hr>
+            </div>
+            <div class="col-md-6 mt-2">
+                {% include 'validations/validation.html.twig' %}
+            </div>
+        </div>
+
+
+        <form action="{{ path('admin_products_update', {id:product.id}) }}" method="POST">
             <div class="row">
                 <div class="col-md-6">
-                    <h6>Image</h6>
-                    <input type="file" name="image">
-                    <hr>
-
-                    <div class="d-flex justify-content-center">
-                        {% if product.images %}
-                            {% for image in product.images %}
-
-
-                                <img src="{{ asset('build/images/phones/' ~ image) }}"
-                                     alt="{{ image }}" width="100" height="100">
-                            {% endfor %}
-                        {% else %}
-                            <img src="{{ asset('build/images/noimage.jpg') }}" alt="" width="100" height="100">
-                        {% endif %}
-                    </div>
-
-                    <hr>
 
                     <select class="form-select" name="product_active" aria-label="Product activation">
                         <option {% if product.active == "active" %} selected {% endif %} value="active">active</option>
@@ -52,7 +73,6 @@
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Leave a comment here" name="product_description"
                                   id="floatingTextarea">{{ product.description }}</textarea>
-                        <label for="floatingTextarea">Comments</label>
                     </div>
                     <label for="product_category" class="form-label">Specialist</label>
                     <select name="product_category_id" id="product_category" class="form-select">
@@ -62,22 +82,16 @@
                             </option>
                         {% endfor %}
                     </select>
-                </div>
-                {# <div class="col-md-6 mt-2"> #}
-                {# {% include 'validations/validation.html.twig' %} #}
-                {# </div> #}
-            </div>
 
-            <div class="row mt-2">
-                <div class="col-12">
-                    <div class="btn-group" role="group">
+                    <div class="btn-group mt-2" role="group">
                         <button type="submit" class="btn btn-outline-success me-2">Save</button>
                         <a class="btn btn-outline-secondary me-2" href="{{ path('admin_products') }}">Back</a>
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="token" value="{{ csrf_token('') }}"/>
+
         </form>
+
     </div>
 
 {% endblock %}
