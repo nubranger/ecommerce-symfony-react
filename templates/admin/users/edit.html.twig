@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="container">
-        <h1 class="text-white">Edit User</h1>
+        <h1>Edit User</h1>
         <form
                 action="{{ path('admin_users_update', {id:user.id}) }}"
                 method="POST" enctype="multipart/form-data">
@@ -54,7 +54,6 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="token" value="{{ csrf_token('') }}"/>
         </form>
     </div>
 

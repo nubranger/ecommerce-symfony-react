@@ -52,6 +52,61 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/users/create/", name="admin_users_create", methods={"GET"})
+     */
+    public function usersCreate(): Response
+    {
+
+        return $this->render('admin/users/create.html.twig', [
+
+        ]);
+    }
+
+    /**
+     * @Route("/users/store/", name="admin_users_store", methods={"POST"})
+     */
+    public function userStore(Request $r, ValidatorInterface $validator)
+    {
+        $changePassword = $r->request->get('user_password');
+        $changePasswordRepeat = $r->request->get('user_password_repeat');
+
+        $user = new User();
+
+        $user
+            ->setName($r->request->get('n'))
+            ->setSurname($r->request->get('s'))
+            ->setEmail($r->request->get('e'))
+            ->setRoles((array)$r->request->get('r'));
+        if (isset($changePassword) && isset($changePasswordRepeat) && $changePassword !== "" && $changePasswordRepeat !== "") {
+
+            if ($changePassword === $changePasswordRepeat) {
+                $user->setPassword($this->passwordHasher->hashPassword($user, $changePassword));
+            } else {
+                $this->addFlash('danger', "You entered different password.");
+                return $this->redirectToRoute('admin_users_create');
+            }
+        } else {
+            $this->addFlash('danger', "Please enter password.");
+            return $this->redirectToRoute('admin_users_create');
+        }
+
+        $errors = $validator->validate($user);
+
+        if (count($errors) > 0) {
+            foreach ($errors as $error) {
+                $this->addFlash('errors', $error->getMessage());
+            }
+            return $this->redirectToRoute('admin_users_create');
+        }
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_users');
+    }
+
+    /**
      * @Route("/users/edit/{id}", name="admin_user_edit", methods={"GET"})
      */
     public function usersEdit($id): Response

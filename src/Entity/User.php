@@ -63,11 +63,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $surname;
 
-    /**
-     * @ORM\Column(type="string", columnDefinition="ENUM('yes', 'no')")
-     */
-    private $online;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -177,18 +172,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setSurname(string $surname): self
     {
         $this->surname = $surname;
-
-        return $this;
-    }
-
-    public function getOnline(): ?string
-    {
-        return $this->online;
-    }
-
-    public function setOnline(?string $online): self
-    {
-        $this->online = $online;
 
         return $this;
     }

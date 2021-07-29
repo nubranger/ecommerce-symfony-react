@@ -2,22 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ca60cc0-bb72-4ee1-b38c-179a39b5c0c2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ecommerce-symfony-react.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ecommerce-symfony-react.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/DataFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/DataFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Products.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/nav.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/products/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/products/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/products/products.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/products/products.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/products/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/products/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/users/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/users/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/users/users.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/users/users.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -174,7 +165,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/products" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/users" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -185,18 +176,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\admin\products" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\admin\users" />
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\admin\products" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\images\phones" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\images" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\styles\scss\admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\src\EventSubscriber" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\admin\products" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\admin" />
       <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\assets\context" />
-      <recent name="C:\Users\NewLenovo\PhpstormProjects\ecommerce-symfony-react\assets" />
     </key>
   </component>
   <component name="RunManager" selected="npm.watch">
@@ -242,7 +233,7 @@
       <workItem from="1626804789616" duration="48476000" />
       <workItem from="1627326125745" duration="2000" />
       <workItem from="1627326168541" duration="65657000" />
-      <workItem from="1627500005901" duration="18439000" />
+      <workItem from="1627500005901" duration="26715000" />
     </task>
     <servers />
   </component>
