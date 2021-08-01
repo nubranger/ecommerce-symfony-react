@@ -3,7 +3,7 @@
 {% block title %}Users list{% endblock %}
 
 {% block body %}
-    <div class="products">
+    <div class="w-100">
         <h1>Users</h1>
 
         <table class="table table-light table-striped">
@@ -15,8 +15,10 @@
                 <th scope="col">ID</th>
                 <th scope="col">Roles</th>
                 <th scope="col">E-mail</th>
-                <th scope="col">Online</th>
-                <th></th>
+                <th scope="col">Address</th>
+                <th scope="col">Orders</th>
+                <th scope="col">Last order</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -29,9 +31,9 @@
                         <td>{{ user.id }}</td>
                         <td>{{ user.roles|first }}</td>
                         <td>{{ user.email }}</td>
-                        <td>
-                            {{ user.online }}
-                        </td>
+                        <td>{{ user.address|length }}</td>
+                        <td>{{ user.ordersList|length }}</td>
+                        <td>{{ user.ordersList|last.date.format("Y-m-d") }}</td>
 
                         <td>
                             <div class="d-flex align-items-center m-1">

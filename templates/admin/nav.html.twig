@@ -1,4 +1,4 @@
-<div class="navigation">
+<div class="navs">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="bootstrap" viewBox="0 0 118 94">
             <title>Bootstrap</title>
@@ -73,12 +73,16 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark">
+                <a href="#" class="nav-link link-dark dropdown-toggle" data-bs-toggle="dropdown">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="#table"></use>
                     </svg>
                     Orders
                 </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ path('admin_orders') }}">Orders list</a></li>
+                    <li><a class="dropdown-item" href="{{ path('admin_orders') }}">Add new order</a></li>
+                </ul>
             </li>
             <li>
                 <a href="#" class="nav-link link-dark dropdown-toggle" data-bs-toggle="dropdown">

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -62,6 +64,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * )
      */
     private $surname;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $orders;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $last_order;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Orders::class, mappedBy="user")
+     */
+    private $orders_list;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Address::class, mappedBy="user")
+     */
+    private $address;
+
+    public function __construct()
+    {
+        $this->orders_list = new ArrayCollection();
+        $this->address = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -172,6 +200,90 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setSurname(string $surname): self
     {
         $this->surname = $surname;
+
+        return $this;
+    }
+
+    public function getOrders(): ?int
+    {
+        return $this->orders;
+    }
+
+    public function setOrders(?int $orders): self
+    {
+        $this->orders = $orders;
+
+        return $this;
+    }
+
+    public function getLastOrder(): ?\DateTimeInterface
+    {
+        return $this->last_order;
+    }
+
+    public function setLastOrder(?\DateTimeInterface $last_order): self
+    {
+        $this->last_order = $last_order;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Orders[]
+     */
+    public function getOrdersList(): Collection
+    {
+        return $this->orders_list;
+    }
+
+    public function addOrdersList(Orders $ordersList): self
+    {
+        if (!$this->orders_list->contains($ordersList)) {
+            $this->orders_list[] = $ordersList;
+            $ordersList->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrdersList(Orders $ordersList): self
+    {
+        if ($this->orders_list->removeElement($ordersList)) {
+            // set the owning side to null (unless already changed)
+            if ($ordersList->getUser() === $this) {
+                $ordersList->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Address[]
+     */
+    public function getAddress(): Collection
+    {
+        return $this->address;
+    }
+
+    public function addAddress(Address $address): self
+    {
+        if (!$this->address->contains($address)) {
+            $this->address[] = $address;
+            $address->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAddress(Address $address): self
+    {
+        if ($this->address->removeElement($address)) {
+            // set the owning side to null (unless already changed)
+            if ($address->getUser() === $this) {
+                $address->setUser(null);
+            }
+        }
 
         return $this;
     }

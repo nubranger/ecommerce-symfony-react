@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Orders;
 use App\Entity\Products;
 use App\Entity\User;
 use App\Service\ImageDeleteService;
 use App\Service\ImageUploadService;
+use DateTime;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,6 +40,124 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
         ]);
+    }
+
+    /**
+     * @Route("/orders", name="admin_orders")
+     */
+    public function ordersIndex(): Response
+    {
+        $orders = $this->getDoctrine()->getRepository(Orders::class)->findAll();
+
+        return $this->render('admin/orders/orders.html.twig', [
+            'orders' => $orders,
+        ]);
+    }
+
+    /**
+     * @Route("/orders/edit/{id}", name="admin_order_edit", methods={"GET"})
+     */
+    public function orderEdit($id): Response
+    {
+        $order = $this->getDoctrine()
+            ->getRepository(Orders::class)
+            ->find($id);
+
+        $products = $this->getDoctrine()
+            ->getRepository(Products::class)
+            ->findAll();
+
+        dump($order->getProducts());
+
+        return $this->render('admin/orders/edit.html.twig', [
+            'order' => $order,
+            'products' => $products
+        ]);
+    }
+
+    /**
+     * @Route("/orders/products/add/{id}", name="admin_order_products_add", methods={"POST"})
+     */
+    public function orderProductsAdd(Request $r, $id): Response
+    {
+        $order = $this->getDoctrine()
+            ->getRepository(Orders::class)
+            ->find($id);
+
+        $productId = $r->request->get('product_id');
+        $productAmount = $r->request->get('product_amount');
+
+        $product = $this->getDoctrine()
+            ->getRepository(Products::class)
+            ->find($productId);
+
+
+        
+
+
+        if ($order->getProducts()) {
+            $orderProductsArray = $order->getProducts();
+        } else {
+            $orderProductsArray = [];
+        }
+        array_push($orderProductsArray, $product);
+        $order->setProducts($orderProductsArray);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($product);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_order_edit', ['id' => $id]);
+    }
+
+    /**
+     * @Route("/orders/delete/{id}", name="admin_order_delete", methods={"POST"})
+     */
+    public function ordersDelete($id): Response
+    {
+        $order = $this->getDoctrine()
+            ->getRepository(Orders::class)
+            ->find($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($order);
+        $entityManager->flush();
+
+        $this->addFlash('danger', "Order {$order->getName()} was deleted.");
+
+        return $this->redirectToRoute('admin_orders');
+    }
+
+    /**
+     * @Route("/orders/update/{id}", name="admin_orders_update", methods={"POST"})
+     */
+    public function orderUpdate(Request $r, ValidatorInterface $validator, $id)
+    {
+        $order = $this->getDoctrine()
+            ->getRepository(Orders::class)
+            ->find($id);
+
+        $date = new DateTime($r->request->get('order_date'));
+
+        $order
+            ->setName($r->request->get('order_name'))
+            ->setStatus($r->request->get('order_status'))
+            ->setDate($date);
+
+        $errors = $validator->validate($order);
+
+        if (count($errors) > 0) {
+            foreach ($errors as $error) {
+                $this->addFlash('errors', $error->getMessage());
+            }
+            return $this->redirectToRoute('admin_user_edit', ['id' => $id]);
+        }
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($order);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_orders');
     }
 
     /**
@@ -187,12 +308,21 @@ class AdminController extends AbstractController
     /**
      * @Route("/products", name="admin_products")
      */
-    public function productsIndex(): Response
+    public function productsIndex(PaginatorInterface $paginator, Request $request): Response
     {
         $products = $this->getDoctrine()->getRepository(Products::class)->findAll();
 
+//        $dql   = "SELECT a FROM AcmeMainBundle:Article a";
+//        $query = $em->createQuery($dql);
+
+        $pagination = $paginator->paginate(
+            $products, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            6 /*limit per page*/
+        );
+
         return $this->render('admin/products/products.html.twig', [
-            'products' => $products,
+            'products' => $pagination,
         ]);
     }
 

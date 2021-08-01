@@ -34,5 +34,7 @@ class DataFixtures extends Fixture
             $manager->persist($product);
             $manager->flush();
         }
+
+
     }
 }

@@ -1,0 +1,11 @@
+.pages {
+
+  .page-link {
+    color: black;
+  }
+
+  .page-item.active .page-link {
+    background-color: #5a5a5a;
+    border-color: #5a5a5a;
+  }
+}

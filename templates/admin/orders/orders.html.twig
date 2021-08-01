@@ -1,0 +1,149 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Orders list{% endblock %}
+
+{% block body %}
+    <div class="w-100">
+        <h1>Orders</h1>
+
+        <div>
+            {% include 'validations/validation.html.twig' %}
+        </div>
+        <table class="table table-light table-striped">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Products</th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+                <form action="{{ path('admin_orders_update', {id:order.id}) }}" method="POST">
+                    <input type="hidden" name="order_name" value="{{ order.name }}">
+
+                    <tr>
+
+                        <th scope="row">{{ loop.index }}</th>
+
+                        <td>{{ order.name }}</td>
+                        <td>{{ order.id }}</td>
+                        <td>
+                            <input class="form-control" type="date" name="order_date" id="order_date"
+                                   value="{{ order.date|date("Y-m-d") }}">
+                        </td>
+                        <td>
+                            <select class="form-select w-auto" name="order_status" aria-label="Order status">
+                                <option {% if order.status == "pending" %} selected {% endif %} value="pending">Pending
+                                    payment
+                                </option>
+                                <option {% if order.status == "processing" %} selected {% endif %} value="processing">
+                                    Processing
+                                </option>
+                                <option {% if order.status == "cancelled" %} selected {% endif %} value="cancelled">
+                                    Cancelled
+                                </option>
+                                <option {% if order.status == "completed" %} selected {% endif %} value="completed">
+                                    Completed
+                                </option>
+                                <option {% if order.status == "refunded" %} selected {% endif %} value="refunded">
+                                    Refunded
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <a href="#" data-bs-toggle="collapse" aria-expanded="false"
+                               aria-controls="collapseExample" data-bs-target="{{ '#order' ~ order.id }}">
+                                {{ order.products|length }}
+                            </a>
+                        </td>
+                        <td>{{ order.total }}</td>
+
+                        <td>
+                            <div class="d-flex align-items-center m-1">
+                                <button type="submit" class="btn btn-outline-success">Save</button>
+                                <a
+                                         href="{{ path('admin_order_edit', {id:order.id}) }}"
+                                        type="button"
+                                        class="btn btn-outline-secondary m-1">Edit</a>
+                                <!-- Button trigger modal -->
+                                <a type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                   data-bs-target="{{ '#order' ~ order.id }}"
+                                >
+                                    Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </form>
+                <tr>
+                    <td class="p-0" colspan="8">
+                        <div class="collapse" id="{{ 'order' ~ order.id }}">
+                            <table class="table table-light">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Product ID</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Discount</th>
+                                    <th scope="col">Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for product in order.products %}
+                                    <tr>
+                                        <th>{{ product.title }}</th>
+                                        <td>{{ product.id }}</td>
+                                        <td>{{ product.price }}</td>
+                                        <td>{{ product.discount }}</td>
+{#                                        <td>{{ product.amount }}</td>#}
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </td>
+                </tr>
+
+
+                {# <!-- Modal --> #}
+                <div class="modal fade" id="{{ 'order' ~ order.id }}" data-bs-backdrop="static"
+                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModal">Delete</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete order {{ order.name }}?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">Close
+                                </button>
+                                <form action="{{ path('admin_order_delete', {id:order.id}) }}" method="POST">
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% if orders is empty %}
+            <p class="empty">There are no orders to show.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

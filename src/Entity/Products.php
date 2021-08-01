@@ -182,4 +182,5 @@ class Products
     {
         return '/uploads/products_images/';
     }
+
 }

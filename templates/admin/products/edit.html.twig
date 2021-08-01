@@ -13,7 +13,11 @@
                         method="POST" enctype="multipart/form-data">
 
                     <h6>Upload images</h6>
-                    <input type="file" name="image">
+
+                    <div class="input-group mb-3">
+                        <input type="file" name="image" class="form-control" id="inputGroupFile02">
+                    </div>
+
                     <div class="mt-1">
                         <button type="submit" class="btn btn-outline-success me-2">Upload</button>
                     </div>
@@ -74,7 +78,7 @@
                         <textarea class="form-control" placeholder="Leave a comment here" name="product_description"
                                   id="floatingTextarea">{{ product.description }}</textarea>
                     </div>
-                    <label for="product_category" class="form-label">Specialist</label>
+                    <label for="product_category" class="form-label">Category</label>
                     <select name="product_category_id" id="product_category" class="form-select">
                         {% for category in categories %}
                             <option value="{{ category.id }}" {% if category.id == product.category.id %} selected {% endif %}>

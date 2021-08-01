@@ -3,7 +3,7 @@
 {% block title %}Products list{% endblock %}
 
 {% block body %}
-    <div class="products">
+    <div class="products w-100">
         <h1>Products</h1>
         <div>
             {% include 'validations/validation.html.twig' %}
@@ -28,9 +28,9 @@
             <tbody>
             {% for product in products %}
                 <form action="{{ path('admin_products_update', {id:product.id}) }}" method="POST">
-                            <input type="hidden" class="form-control" name="product_title" value="{{ product.title }}">
-                            <input type="hidden" class="form-control" name="product_description" value="{{ product.description }}">
-                            <input type="hidden" class="form-control" name="product_category_id" value="{{ product.category.id }}">
+                    <input type="hidden" name="product_title" value="{{ product.title }}">
+                    <input type="hidden" name="product_description" value="{{ product.description }}">
+                    <input type="hidden" name="product_category_id" value="{{ product.category.id }}">
                     <tr>
                         <th scope="row">{{ loop.index }}</th>
                         <td>
@@ -57,8 +57,11 @@
                         </td>
                         <td>
                             <select class="form-select w-auto" name="product_active" aria-label="Product activation">
-                                <option {% if product.active == "active" %} selected {% endif %} value="active">active</option>
-                                <option {% if product.active == "inactive" %} selected {% endif %} value="inactive">inactive</option>
+                                <option {% if product.active == "active" %} selected {% endif %} value="active">active
+                                </option>
+                                <option {% if product.active == "inactive" %} selected {% endif %} value="inactive">
+                                    inactive
+                                </option>
                             </select>
                         </td>
 
@@ -121,6 +124,11 @@
             {% endfor %}
             </tbody>
         </table>
+
+        {# display navigation #}
+        <div class="pages">
+            {{ knp_pagination_render(products) }}
+        </div>
 
         {% if products is empty %}
             <p class="empty">There are no products to show.</p>
