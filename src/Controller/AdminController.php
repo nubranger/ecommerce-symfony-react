@@ -15,6 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -38,7 +41,7 @@ class AdminController extends AbstractController
     public function index(): Response
     {
         return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
+
         ]);
     }
 
@@ -55,6 +58,44 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/orders/create/", name="admin_orders_create", methods={"GET"})
+     */
+    public function ordersCreate(): Response
+    {
+        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+
+        return $this->render('admin/orders/create.html.twig', [
+            'users' => $users,
+        ]);
+    }
+
+    /**
+     * @Route("/order/store/", name="admin_orders_store", methods={"POST"})
+     */
+    public function orderStore(Request $r, ValidatorInterface $validator)
+    {
+        $order = new Orders();
+
+        $userId = $r->request->get('order_name');
+        $user = $this->getDoctrine()->getRepository(User::class)->find($userId);
+
+        $date = new DateTime($r->request->get('order_date'));
+
+        $order
+            ->setName($user->getName() . " " . $user->getSurname())
+            ->setDate($date)
+            ->setProducts([])
+            ->setStatus($r->request->get('order_status'))
+            ->setUser($user);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($order);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_orders');
+    }
+
+    /**
      * @Route("/orders/edit/{id}", name="admin_order_edit", methods={"GET"})
      */
     public function orderEdit($id): Response
@@ -67,7 +108,7 @@ class AdminController extends AbstractController
             ->getRepository(Products::class)
             ->findAll();
 
-        dump($order->getProducts());
+//        dump($order->getProducts());
 
         return $this->render('admin/orders/edit.html.twig', [
             'order' => $order,
@@ -87,12 +128,58 @@ class AdminController extends AbstractController
         $productId = $r->request->get('product_id');
         $productAmount = $r->request->get('product_amount');
 
+        if ($productAmount <= 0 || !is_numeric($productAmount)) {
+            $this->addFlash('danger', "Please enter valid amount");
+            return $this->redirectToRoute('admin_order_edit', ['id' => $id]);
+        }
+
+
         $product = $this->getDoctrine()
             ->getRepository(Products::class)
             ->find($productId);
 
+        if ($order->getProducts()) {
+            $orderProductsArray = $order->getProducts();
 
-        
+            foreach ($orderProductsArray as $key => $val) {
+                if ($val['id'] == $productId) {
+                    $this->addFlash('danger', "Product is already in the list.");
+                    return $this->redirectToRoute('admin_order_edit', ['id' => $id]);
+                }
+            }
+        } else {
+            $orderProductsArray = [];
+        }
+
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, []);
+
+        $data = $serializer->normalize($product, null, [
+            AbstractNormalizer::IGNORED_ATTRIBUTES => ['category']
+        ]);
+
+        $data['amount'] = $productAmount;
+
+        array_push($orderProductsArray, $data);
+        $order->setProducts($orderProductsArray);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($order);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_order_edit', ['id' => $id]);
+    }
+
+    /**
+     * @Route("/orders/products/remove/{id}", name="admin_order_products_remove", methods={"POST"})
+     */
+    public function orderProductsRemove(Request $r, $id): Response
+    {
+        $order = $this->getDoctrine()
+            ->getRepository(Orders::class)
+            ->find($id);
+
+        $productId = $r->request->get('product_id');
 
 
         if ($order->getProducts()) {
@@ -100,11 +187,21 @@ class AdminController extends AbstractController
         } else {
             $orderProductsArray = [];
         }
-        array_push($orderProductsArray, $product);
+
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, []);
+
+        foreach ($orderProductsArray as $key => $val) {
+//            dd($val['id']);
+            if ($val['id'] == $productId) {
+                unset($orderProductsArray[$key]);
+            }
+        }
+        
         $order->setProducts($orderProductsArray);
 
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($product);
+        $entityManager->persist($order);
         $entityManager->flush();
 
         return $this->redirectToRoute('admin_order_edit', ['id' => $id]);

@@ -103,6 +103,7 @@
                 <th scope="col">Price</th>
                 <th scope="col">Discount</th>
                 <th scope="col">Amount</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -112,8 +113,45 @@
                     <td>{{ product.id }}</td>
                     <td>{{ product.price }}</td>
                     <td>{{ product.discount }}</td>
-{#                    <td>{{ product.amount }}</td>#}
+                    <td>{{ product.amount }}</td>
+                    <td>
+                        <div class="d-flex align-items-center m-1">
+                            <!-- Button trigger modal -->
+                            <a type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                               data-bs-target="{{ '#product' ~ product.id }}"
+                            >
+                                Delete
+                            </a>
+                        </div>
+                    </td>
                 </tr>
+
+                <!-- Modal -->
+                <div class="modal fade" id="{{ 'product' ~ product.id }}" data-bs-backdrop="static"
+                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModal">Delete</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete {{ product.title }}?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary"
+                                        data-bs-dismiss="modal">Close
+                                </button>
+                                <form action="{{ path('admin_order_products_remove', {id:order.id}) }}" method="POST">
+                                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
             </tbody>
         </table>

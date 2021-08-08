@@ -1,0 +1,49 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Create Order{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Create order</h1>
+        <form action="{{ path('admin_orders_store') }}" method="POST">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <label for="order_name" class="form-label">Order name</label>
+                    <select name="order_name" id="order_name" class="form-select">
+                        {% for user in users %}
+                            <option value="{{ user.id }}">
+                                {{ user.name ~ " " ~ user.surname }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <label for="order_date" class="form-label">Order date</label>
+                    <input class="form-control" type="date" name="order_date" id="order_date">
+                    <label for="order_status" class="form-label">Order status</label>
+                    <select class="form-select w-auto" name="order_status" aria-label="Order status">
+                        <option value="pending">Pending payment</option>
+                        <option value="processing">Processing</option>
+                        <option value="cancelled">Cancelled</option>
+                        <option value="completed">Completed</option>
+                        <option value="refunded">Refunded</option>
+                    </select>
+
+                </div>
+                <div class="col-md-6 mt-2">
+                    {% include 'validations/validation.html.twig' %}
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-12">
+                    <div class="btn-group" role="group">
+                        <button type="submit" class="btn btn-outline-success me-2">Save</button>
+                        <a class="btn btn-outline-secondary me-2" href="{{ path('admin_orders') }}">Back</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

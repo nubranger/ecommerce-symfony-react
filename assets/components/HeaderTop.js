@@ -29,6 +29,7 @@ const HeaderTop = () => {
 
                                         <i className="secondary bi bi-person-circle"
                                            id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false"
+                                           style={{color: "#6c757d"}}
                                         />
 
                                         <ul className="dropdown-menu text-small shadow" style={{zIndex: 1200}}

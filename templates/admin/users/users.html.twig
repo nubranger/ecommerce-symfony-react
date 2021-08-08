@@ -32,8 +32,8 @@
                         <td>{{ user.roles|first }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ user.address|length }}</td>
-                        <td>{{ user.ordersList|length }}</td>
-                        <td>{{ user.ordersList|last.date.format("Y-m-d") }}</td>
+                        <td>{{ user.ordersList|length|default('0') }}</td>
+                        <td>{{ user.ordersList|last.date.format("Y-m-d")|default('no orders') }}</td>
 
                         <td>
                             <div class="d-flex align-items-center m-1">
