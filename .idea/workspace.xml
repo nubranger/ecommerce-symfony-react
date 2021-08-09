@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3ca60cc0-bb72-4ee1-b38c-179a39b5c0c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/components/HeaderTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/components/HeaderTop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/nav.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Address.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/orders/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/orders/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/orders/orders.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/orders/orders.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/users/users.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/users/users.html.twig" afterDir="false" />
@@ -166,7 +165,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/orders" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/address" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -177,11 +176,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\admin\address" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\admin\orders" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\src\Controller" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\admin\users" />
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\admin\products" />
-      <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\assets\images\phones" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\power\Documents\GitHub\ecommerce-symfony-react\templates\pagination" />
@@ -234,7 +233,7 @@
       <workItem from="1626804789616" duration="48476000" />
       <workItem from="1627326125745" duration="2000" />
       <workItem from="1627326168541" duration="65657000" />
-      <workItem from="1627500005901" duration="93497000" />
+      <workItem from="1627500005901" duration="109781000" />
     </task>
     <servers />
   </component>

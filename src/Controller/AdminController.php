@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Address;
 use App\Entity\Category;
 use App\Entity\Orders;
 use App\Entity\Products;
@@ -29,10 +30,12 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class AdminController extends AbstractController
 {
     private $passwordHasher;
+    private $paginator;
 
-    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    public function __construct(PaginatorInterface $paginator, UserPasswordHasherInterface $passwordHasher)
     {
         $this->passwordHasher = $passwordHasher;
+        $this->paginator = $paginator;
     }
 
     /**
@@ -48,12 +51,18 @@ class AdminController extends AbstractController
     /**
      * @Route("/orders", name="admin_orders")
      */
-    public function ordersIndex(): Response
+    public function ordersIndex(Request $request): Response
     {
         $orders = $this->getDoctrine()->getRepository(Orders::class)->findAll();
 
+        $pagination = $this->paginator->paginate(
+            $orders,
+            $request->query->getInt('page', 1), /*page number*/
+            6 /*limit per page*/
+        );
+
         return $this->render('admin/orders/orders.html.twig', [
-            'orders' => $orders,
+            'orders' => $pagination,
         ]);
     }
 
@@ -91,6 +100,8 @@ class AdminController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($order);
         $entityManager->flush();
+
+        $this->addFlash('success', "Order was created.");
 
         return $this->redirectToRoute('admin_orders');
     }
@@ -167,6 +178,8 @@ class AdminController extends AbstractController
         $entityManager->persist($order);
         $entityManager->flush();
 
+        $this->addFlash('success', "Product was added.");
+
         return $this->redirectToRoute('admin_order_edit', ['id' => $id]);
     }
 
@@ -197,12 +210,14 @@ class AdminController extends AbstractController
                 unset($orderProductsArray[$key]);
             }
         }
-        
+
         $order->setProducts($orderProductsArray);
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($order);
         $entityManager->flush();
+
+        $this->addFlash('danger', "Product was deleted.");
 
         return $this->redirectToRoute('admin_order_edit', ['id' => $id]);
     }
@@ -254,18 +269,26 @@ class AdminController extends AbstractController
         $entityManager->persist($order);
         $entityManager->flush();
 
+        $this->addFlash('success', "Order was updated.");
+
         return $this->redirectToRoute('admin_orders');
     }
 
     /**
      * @Route("/users", name="admin_users")
      */
-    public function usersIndex(): Response
+    public function usersIndex(Request $request): Response
     {
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
 
+        $pagination = $this->paginator->paginate(
+            $users,
+            $request->query->getInt('page', 1), /*page number*/
+            6 /*limit per page*/
+        );
+
         return $this->render('admin/users/users.html.twig', [
-            'users' => $users,
+            'users' => $pagination,
         ]);
     }
 
@@ -320,6 +343,8 @@ class AdminController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
         $entityManager->flush();
+
+        $this->addFlash('success', "User was added.");
 
         return $this->redirectToRoute('admin_users');
     }
@@ -381,6 +406,8 @@ class AdminController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
+        $this->addFlash('success', "User {$user->getName()} {$user->getSurname()} was updated.");
+
         return $this->redirectToRoute('admin_users');
     }
 
@@ -397,7 +424,112 @@ class AdminController extends AbstractController
         $entityManager->remove($user);
         $entityManager->flush();
 
-        $this->addFlash('danger', "User {$user->getName()} was deleted.");
+        $this->addFlash('danger', "User {$user->getName()} {$user->getSurname()} was deleted.");
+
+        return $this->redirectToRoute('admin_users');
+    }
+
+    /**
+     * @Route("/address/create/{id}", name="admin_address_create", methods={"GET"})
+     */
+    public function addressCreate($id): Response
+    {
+
+        $user = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->find($id);
+
+        return $this->render('admin/address/create.html.twig', [
+            "user" => $user
+        ]);
+    }
+
+    /**
+     * @Route("/address/store/{id}", name="admin_address_store", methods={"POST"})
+     */
+    public function addressStore(Request $r, ValidatorInterface $validator, $id)
+    {
+        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+
+        $address = new Address();
+
+        $address
+            ->setCountry($r->request->get('country'))
+            ->setPostalCode($r->request->get('postal_code'))
+            ->setCity($r->request->get('city'))
+            ->setStreet($r->request->get('street'))
+            ->setHouseNumber($r->request->get('house_number'))
+            ->setFlatNumber($r->request->get('flat_number'))
+            ->setPhoneNumber($r->request->get('phone_number'))
+            ->setUser($user);
+
+        $errors = $validator->validate($address);
+        if (count($errors) > 0) {
+            foreach ($errors as $error) {
+                $this->addFlash('errors', $error->getMessage());
+            }
+            return $this->redirectToRoute('admin_address_create', ['id' => $id]);
+        }
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($address);
+        $entityManager->flush();
+
+        $this->addFlash('success', "Address was added.");
+
+        return $this->redirectToRoute('admin_users');
+    }
+
+    /**
+     * @Route("/address/update/{id}", name="admin_address_update", methods={"POST"})
+     */
+    public function addressUpdate(Request $r, $id, ValidatorInterface $validator)
+    {
+        $address = $this->getDoctrine()
+            ->getRepository(Address::class)
+            ->find($id);
+
+        $address
+            ->setCountry($r->request->get('country'))
+            ->setPostalCode($r->request->get('postal_code'))
+            ->setCity($r->request->get('city'))
+            ->setStreet($r->request->get('street'))
+            ->setHouseNumber($r->request->get('house_number'))
+            ->setFlatNumber($r->request->get('flat_number'))
+            ->setPhoneNumber($r->request->get('phone_number'));
+
+        $errors = $validator->validate($address);
+        if (count($errors) > 0) {
+            foreach ($errors as $error) {
+                $this->addFlash('errors', $error->getMessage());
+            }
+            return $this->redirectToRoute('admin_users');
+        }
+
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($address);
+        $entityManager->flush();
+
+        $this->addFlash('success', "Address of {$address->getUser()->getName()} {$address->getUser()->getSurname()} was saved.");
+
+        return $this->redirectToRoute('admin_users');
+    }
+
+    /**
+     * @Route("/address/delete/{id}", name="admin_address_delete", methods={"POST"})
+     */
+    public function addressDelete($id): Response
+    {
+        $address = $this->getDoctrine()
+            ->getRepository(Address::class)
+            ->find($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($address);
+        $entityManager->flush();
+
+        $this->addFlash('danger', "Address of {$address->getUser()->getName()} {$address->getUser()->getSurname()} was deleted.");
 
         return $this->redirectToRoute('admin_users');
     }
@@ -405,15 +537,15 @@ class AdminController extends AbstractController
     /**
      * @Route("/products", name="admin_products")
      */
-    public function productsIndex(PaginatorInterface $paginator, Request $request): Response
+    public function productsIndex(Request $request): Response
     {
         $products = $this->getDoctrine()->getRepository(Products::class)->findAll();
 
 //        $dql   = "SELECT a FROM AcmeMainBundle:Article a";
 //        $query = $em->createQuery($dql);
 
-        $pagination = $paginator->paginate(
-            $products, /* query NOT result */
+        $pagination = $this->paginator->paginate(
+            $products,
             $request->query->getInt('page', 1), /*page number*/
             6 /*limit per page*/
         );
@@ -661,7 +793,7 @@ class AdminController extends AbstractController
         $entityManager->remove($product);
         $entityManager->flush();
 
-        $this->addFlash('success', "Product {$product->getTitle()} was deleted.");
+        $this->addFlash('danger', "Product {$product->getTitle()} was deleted.");
 
         return $this->redirectToRoute('admin_products');
     }

@@ -57,10 +57,14 @@
                             </select>
                         </td>
                         <td>
-                            <a href="#" data-bs-toggle="collapse" aria-expanded="false"
-                               aria-controls="collapseExample" data-bs-target="{{ '#order' ~ order.id }}">
-                                {{ order.products|length }}
-                            </a>
+                            {% if order.products|length == 0 %}
+                                0
+                            {% elseif order.products|length > 0 %}
+                                <a href="#" data-bs-toggle="collapse" aria-expanded="false"
+                                   aria-controls="collapseExample" data-bs-target="{{ '#order' ~ order.id }}">
+                                    {{ order.products|length }}
+                                </a>
+                            {% endif %}
                         </td>
                         <td>{{ order.total }}</td>
 
@@ -68,7 +72,7 @@
                             <div class="d-flex align-items-center m-1">
                                 <button type="submit" class="btn btn-outline-success">Save</button>
                                 <a
-                                         href="{{ path('admin_order_edit', {id:order.id}) }}"
+                                        href="{{ path('admin_order_edit', {id:order.id}) }}"
                                         type="button"
                                         class="btn btn-outline-secondary m-1">Edit</a>
                                 <!-- Button trigger modal -->
@@ -95,6 +99,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <h4>Ordered products</h4>
                                 {% for product in order.products %}
                                     <tr>
                                         <th>{{ product.title }}</th>
@@ -140,6 +145,11 @@
             {% endfor %}
             </tbody>
         </table>
+
+        {# display navigation #}
+        <div class="pages">
+            {{ knp_pagination_render(orders) }}
+        </div>
 
         {% if orders is empty %}
             <p class="empty">There are no orders to show.</p>

@@ -1,0 +1,46 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Create User{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Create Address of {{ user.name ~ " " ~ user.surname }}</h1>
+        <form action="{{ path('admin_address_store', {id: user.id}) }}" method="POST">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <label for="country" class="form-label">Country</label>
+                    <input class="form-control" type="text" name="country" id="country">
+                    <label for="postal_code" class="form-label">Postal code</label>
+                    <input class="form-control" type="text" name="postal_code" id="postal_code">
+                    <label for="city" class="form-label">City</label>
+                    <input class="form-control" type="text" name="city" id="city">
+                    <label for="street" class="form-label">Street</label>
+                    <input class="form-control" type="text" name="street" id="street">
+                    <label for="house_number" class="form-label">House number</label>
+                    <input class="form-control" type="text" name="house_number" id="house_number">
+                    <label for="flat_number" class="form-label">Flat number</label>
+                    <input class="form-control" type="text" name="flat_number" id="flat_number">
+                    <label for="phone_number" class="form-label">Phone number</label>
+                    <input class="form-control" type="text" name="phone_number" id="phone_number">
+
+
+                </div>
+                <div class="col-md-6 mt-2">
+                    {% include 'validations/validation.html.twig' %}
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-12">
+                    <div class="btn-group" role="group">
+                        <button type="submit" class="btn btn-outline-success me-2">Save</button>
+                        <a class="btn btn-outline-secondary me-2" href="{{ path('admin_users') }}">Back</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
